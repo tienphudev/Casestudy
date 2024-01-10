@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFileEmployee {
-    List<Employee> readfile() {
-        File file = new File("D:\\Codegym\\phu.txt");
+    public static List<Employee> readfile() {
+        File file = new File("D:\\Codegym\\");
         try {
             InputStream inputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
@@ -21,13 +21,14 @@ public class ReadFileEmployee {
             employeeList = (List<Employee>) objectInputStream.readObject();
             return employeeList;
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Lỗi không xác dinh");
+            e.getStackTrace();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+           return new ArrayList<>();
         } catch (ClassNotFoundException e) {
             return new ArrayList<>();
-
-
         }
+//    }
+
     }
 }
